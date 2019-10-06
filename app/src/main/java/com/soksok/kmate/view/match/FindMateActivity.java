@@ -10,8 +10,10 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.soksok.kmate.R;
+import com.soksok.kmate.common.ProgressCircleDialog;
 import com.soksok.kmate.databinding.ActivityFindMateBinding;
 import com.soksok.kmate.http.model.BaseResponse;
 import com.soksok.kmate.http.model.request.TourRequest;
@@ -133,8 +135,20 @@ public class FindMateActivity extends AppCompatActivity {
         /*
          * 다이어로그 확인버튼 선택되면 액티비티 종료
          */
-        dialog.isShowing.observe(this, aBoolean -> {
-            if (!aBoolean) {
+        dialog.isShowing.observe(this, isShowing -> {
+            if (!isShowing) {
+                showProgressCircleDialog(dialog);
+            }
+        });
+    }
+
+    private void showProgressCircleDialog(ApplyMateDialog applyMateDialog) {
+
+        ProgressCircleDialog dialog = new ProgressCircleDialog(this);
+        dialog.show();
+        dialog.isShowing.observe(this, isShowing -> {
+            if (!isShowing) {
+                applyMateDialog.dismiss();
                 goToMainActivity();
             }
         });
