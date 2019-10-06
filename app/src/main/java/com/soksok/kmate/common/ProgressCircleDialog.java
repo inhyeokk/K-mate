@@ -1,24 +1,24 @@
-package com.soksok.kmate.view.match;
+package com.soksok.kmate.common;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Window;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.soksok.kmate.R;
 
-public class ApplyMateDialog extends Dialog {
+public class ProgressCircleDialog extends Dialog {
 
+    private static final int SPLASH_TIME_OUT = 1500;
     public MutableLiveData<Boolean> isShowing = new MutableLiveData<>();
 
-    public ApplyMateDialog(@NonNull Context context) {
+    public ProgressCircleDialog(@NonNull Context context) {
         super(context);
     }
 
@@ -26,13 +26,15 @@ public class ApplyMateDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.dialog_apply_mate);
+        setContentView(R.layout.dialog_progress_circle);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setCanceledOnTouchOutside(true);
 
-        TextView tvOk = findViewById(R.id.tv_apply_ok);
-        tvOk.setOnClickListener(v -> {
-            isShowing.postValue(false);
-        });
+        new Handler().postDelayed(this::setIsShowing, SPLASH_TIME_OUT);
+    }
+
+    private void setIsShowing() {
+        isShowing.postValue(false);
+        dismiss();
     }
 }
