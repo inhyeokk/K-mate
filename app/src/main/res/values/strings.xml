@@ -1,0 +1,191 @@
+<resources>
+    <string name="app_name">K-mate</string>
+
+    <!-- common -->
+    <string name="common_date">%1$s-%2$s-%3$s %4$s</string>
+    <string name="common_toast_back_press">\'뒤로\'버튼 한번 더 누르시면 종료됩니다.</string>
+    <string name="common_mate_email">mate%1$d@korea.com</string>
+    <string name="common_pref_chat_item">%1$s_%2$s_%3$s</string>
+
+    <!-- activity_main -->
+    <string name="main_tv_title"><b>%1$s</b>님,\n한국여행을 계획해보세요!</string>
+    <string name="main_tv_title_ex"><b>Breeze</b>님,\n한국여행을 계획해보세요!</string>
+    <string name="main_tv_my_trip">내 여행</string>
+    <string name="main_tv_list">추천 목록</string>
+    <string name="main_tv_upcoming_trip">다가오는 여행</string>
+    <string name="main_tv_last_trip">지난 여행</string>
+
+    <!-- item_my_trip -->
+    <string name="my_trip_tv_title_ex">경복궁 한복 투어</string>
+    <string name="my_trip_tv_date_ex">10월 1일 1PM-6PM</string>
+    <string name="my_trip_tv_date_short">%1$d월 %2$d일 %3$d%4$s-%5$d%6$s</string>
+    <string name="my_trip_tv_date_long">%1$d월 %2$d일 %3$d%4$s - %5$d월 %6$d일 %7$d%8$s</string>
+    <string name="my_trip_tv_member_ex">성인 2</string>
+    <string name="my_trip_tv_member_adult">성인 %1$d</string>
+    <string name="my_trip_tv_member_children">어린이 %1$d</string>
+    <string name="my_trip_tv_member_baby">유아 %1$d</string>
+    <string name="my_trip_tv_with_mate_ex">with 메이트 수진</string>
+    <string name="my_trip_tv_with_mate">with 메이트 %1$s</string>
+
+    <!-- item_my_trip_menu -->
+    <string name="menu_tv_change_album_title">앨범 제목 변경</string>
+    <string name="menu_tv_change_album_cover">앨범 커버사진 변경</string>
+    <string name="menu_tv_delete_album">앨범 삭제</string>
+
+    <!-- dialog_change_album_title -->
+    <string name="popup_tv_album_title">앨범 제목</string>
+    <string name="popup_ed_album_title_hint">경복궁 한복 투어</string>
+
+    <!-- dialog_delete_album -->
+    <string name="popup_tv_delete_album_title">앨범을 삭제하시겠습니까?</string>
+    <string name="popup_tv_delete_album_yes">네,할래요</string>
+    <string name="popup_tv_delete_album_cancel">아니요</string>
+
+    <!-- activity_setting -->
+    <string name="setting_user_name_ex">Breeze</string>
+    <string name="setting_user_email_ex">breeze@gmail.com</string>
+    <string name="setting_certify_seoul_mate">K-mate 인증하기</string>
+    <string name="setting_like_mate">좋아요 하는 메이트</string>
+    <string name="setting_like_spot">좋아요 하는 관광지</string>
+    <string name="setting_like_restaurant">좋아요 하는 맛집</string>
+    <string name="setting_like_information">좋아요 하는 정보</string>
+    <string name="setting_logout">로그아웃</string>
+    <string name="setting_bottom_title">K-mate 가 되고 싶으신가요?</string>
+    <string name="setting_bottom_mail"><b>\'smej201@naver.com\'</b>으로\n자신의 여행코스와 프로필 정보를 보내주세요.</string>
+    <string name="setting_bottom_description">
+        당신이 만든 여행 일정과 노하우를\n
+        한국에 놀러온 관광객에게 공유해주세요.\n
+        \n
+        메이트로 등록되면, K-mate의 모든 관광객과\n
+        함께 즐거운 여행일정을 공유할 수 있습니다.
+    </string>
+    <string name="setting_bottom_cancel">취소</string>
+    <string name="setting_bottom_contact">메일로 문의하기</string>
+
+    <!-- dialog_logout -->
+    <string name="dialog_tv_logout_title">로그아웃 하시겠습니까?</string>
+    <string name="dialog_tv_logout_yes">네,할래요</string>
+    <string name="dialog_tv_logout_cancel">아니요</string>
+
+    <!-- activity_like -->
+    <string name="like_tv_count">2</string>
+
+    <!-- item_like -->
+    <string name="like_tv_mate">메이트 %1$s</string>
+    <string name="like_tv_mate_description">"한국의 문화를 즐겨봐요!"</string>
+    <string name="like_tv_spot">북촌 한옥마을</string>
+    <string name="like_tv_spot_description">한옥에서 낭만적인 하룻밤</string>
+    <string name="like_tv_spot_type">연등,서울축제,문화</string>
+    <string name="like_tv_restaurant">청아람</string>
+    <string name="like_tv_restaurant_description">곱창전골과 소주 한잔</string>
+
+    <!-- activity_match -->
+    <string name="match_tv_title_first">나에게 꼭 맞는</string>
+    <string name="match_tv_title_second">를 찾아보세요</string>
+    <string name="match_tv_day_first">첫째날</string>
+    <string name="match_tv_day_last">마지막날</string>
+    <string name="match_tv_date_ex">2019.10.01</string>
+    <string name="match_tv_date">%1$d.%2$s.%3$s</string>
+    <string name="match_tv_time_ex">13:00</string>
+    <string name="match_tv_time">%1$s:%2$s</string>
+    <string name="match_tv_people">동행인원</string>
+    <string name="match_tv_adult">성인</string>
+    <string name="match_tv_child">어린이</string>
+    <string name="match_tv_baby">유아</string>
+    <string name="match_tv_count_ex">0 명</string>
+    <string name="match_tv_count">%1$d 명</string>
+
+    <!-- activity_select -->
+    <string name="select_tv_spot_title">어떤 관광지를\n여행하고 싶으신가요?</string>
+    <string name="select_tv_spot_show_list">리스트 보기</string>
+    <string name="select_tv_style_title">여행 스타일을 모두 선택해주세요.</string>
+    <string name="select_tv_style_restaurant">맛집</string>
+    <string name="select_tv_style_recreation">휴양</string>
+    <string name="select_tv_style_tourism">관광</string>
+    <string name="select_tv_style_activity">액티비티</string>
+    <string name="select_tv_style_culture">문화체험</string>
+    <string name="select_tv_type_title">여행 유형을 모두 선택해주세요.</string>
+    <string name="select_tv_type_active">적극적인</string>
+    <string name="select_tv_type_challenging">도전적인</string>
+    <string name="select_tv_type_free">여유로운</string>
+    <string name="select_tv_type_rely">의지하고 싶은</string>
+    <string name="select_tv_type_busy">바삐 움직이는</string>
+
+    <!-- activity_spot_list -->
+    <string name="spot_list_tv_cancel">취소</string>
+    <string name="spot_list_tv_complete">선택 완료</string>
+    <string name="spot_list_tv_title">관광지 리스트</string>
+    <string name="spot_list_tv_all">한국 어디든 좋아요!</string>
+    <string name="spot_list_msg">관광 리스트를 선택 해주세요.</string>
+
+    <!-- activity_enter_travel -->
+    <string name="enter_travel_tv_title">여행 제목 입력</string>
+    <string name="enter_travel_tv_description">* 커버 사진은 추후 변경이 불가하니 신중히 선택해주세요.</string>
+    <string name="enter_travel_tv_find_mate">메이트 찾기</string>
+
+    <!-- activity_find_mate -->
+    <string name="find_mate_tv_apply_mate">메이트 신청하기</string>
+
+    <!-- dialog_apply_mate -->
+    <string name="dialog_tv_apply_description">
+        메이트를 신청하였습니다!\n
+        내 여행에 앨범이 생성되어\n
+        메이트와 대화를 나눌 수 있어요
+    </string>
+    <string name="dialog_tv_apply_ok">확 인</string>
+
+    <!-- activity_login -->
+    <string name="login_ed_email_id">이메일 아이디 입력</string>
+    <string name="login_ed_password">비밀번호 입력</string>
+    <string name="login_tv_login">로그인</string>
+    <string name="login_tv_join">이메일로 회원가입</string>
+    <string name="login_tv_start_kakao">카카오로\n시작하기</string>
+    <string name="login_tv_start_naver">네이버로 시작하기</string>
+
+    <!-- activity_join -->
+    <string name="join_tv_title">회원가입</string>
+    <string name="join_ed_email">이메일 주소</string>
+    <string name="join_ed_nickname">닉네임</string>
+    <string name="join_ed_password">비밀번호</string>
+    <string name="join_ed_password_check">비밀번호 확인</string>
+    <string name="join_tv_age"><u>%1$d</u>세</string>
+    <string name="join_tv_age_ex">____세</string>
+    <string name="join_tv_female">여자</string>
+    <string name="join_tv_male">남자</string>
+    <string name="join_tv_join">가입하기</string>
+
+    <!-- activity_recommend -->
+    <string name="recommend_ed_search">검색</string>
+    <string name="recommend_tab_mate">메이트</string>
+    <string name="recommend_tab_spot">관광지</string>
+    <string name="recommend_tab_restaurant">맛집</string>
+    <string name="recommend_tab_information">정보</string>
+
+    <!-- activity_chat -->
+    <string name="chat_tv_title">경복궁 한복 투어</string>
+    <string name="chat_ed_message">메시지 작성</string>
+    <string name="chat_tv_send">보내기</string>
+
+    <!-- item_chat -->
+    <string name="chat_tv_content">hello breeze!</string>
+    <string name="chat_tv_content_partner">안녕하세요 %1$s님 메이트%2$s입니다!</string>
+    <string name="chat_tv_time">10:24</string>
+
+    <!-- fragment_chat_menu -->
+    <string name="chat_tv_show_chat_partner">대화상대 정보보기</string>
+    <string name="chat_tv_album">앨범</string>
+    <string name="chat_tv_date">일정</string>
+
+    <!-- activity_album -->
+    <string name="album_tv_title">앨범</string>
+
+    <!-- activity_mate -->
+    <string name="mate_tv_title">메이트 정보보기</string>
+
+    <!-- activity_chat_partner -->
+    <string name="partner_tv_title">대화상대 정보보기</string>
+
+    <!-- dialog_change_user_name -->
+    <string name="dialog_tv_user_name">닉네임 변경</string>
+    <string name="dialog_ed_user_name">Breeze</string>
+</resources>
