@@ -138,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<BaseResponse<String>> call, Throwable t) {
-                System.out.println("실패!!");
+                System.out.println("실패!! --> " + t.getMessage());
             }
         });
     }

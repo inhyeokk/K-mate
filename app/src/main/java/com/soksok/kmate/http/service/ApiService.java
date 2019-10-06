@@ -80,14 +80,14 @@ public interface ApiService {
     //   - 등록된 메이트의 좋아요 카운트를 +1
     //   - 메이트의 이메일을 path 파라미터로 전송함.
     //   - 200 정상 처리
-    @PUT("user/email/like/{email}")
+    @PUT("user/mate/like/{email}")
     Call<BaseResponse<String>> likeMate(@Path("email") String email);
 
     // # 메이트 좋아요취소
     //   - 등록된 메이트의 좋아요 카운트를 -1
     //   - 메이트의 이메일을 path 파라미터로 전송함.
     //   - 200 정상 처리
-    @PUT("user/email/unlike/{email}")
+    @PUT("user/mate/unlike/{email}")
     Call<BaseResponse<String>> unlikeMate(@Path("email") String email);
 
     // # 유저 프로필 이미지 변경
@@ -109,8 +109,8 @@ public interface ApiService {
     // # 유저의 메이트 불러오기
     //   - 유저의 메이트를 불러온다. (map)
     //   - 200 - 정상 불러오기
-    @PUT("user/map/mate")
-    Call<BaseResponse<MateMap>> getMatebyUser();
+    @GET("user/map/mate")
+    Call<BaseResponse<List<MateMap>>> getMatebyUser();
 
     // # 모든 여행 불러오기
     //   - 저장된 모든 유저의 여행을 불러옴.
@@ -199,7 +199,7 @@ public interface ApiService {
 
     public static final Retrofit retrofit = new Retrofit.Builder()
             .client(client)
-            .baseUrl(aws)
+            .baseUrl(localhost)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 

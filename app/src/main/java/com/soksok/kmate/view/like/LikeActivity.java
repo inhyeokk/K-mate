@@ -10,7 +10,10 @@ import android.os.Bundle;
 
 import com.soksok.kmate.R;
 import com.soksok.kmate.databinding.ActivityLikeBinding;
+import com.soksok.kmate.http.model.BaseResponse;
+import com.soksok.kmate.http.model.MateMap;
 import com.soksok.kmate.http.model.Recommend;
+import com.soksok.kmate.http.service.ApiService;
 import com.soksok.kmate.view.like.adapter.LikeListAdapter;
 import com.soksok.kmate.view.like.adapter.LikeListMateAdapter;
 import com.soksok.kmate.view.recommend.MateActivity;
@@ -19,19 +22,27 @@ import com.soksok.kmate.view.setting.SettingActivity;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LikeActivity extends AppCompatActivity {
 
     public static final String EXTRA_MATE_EMAIL = "EXTRA_MATE_EMAIL";
 
     private String value;
-    private ArrayList<String> mateEmails;
+    private List<String> mateEmails = new ArrayList<>();
     private ArrayList<Recommend> recommends;
 
     private LikeListMateAdapter likeListMateAdapter;
     private LikeListAdapter likeListAdapter;
 
     private ActivityLikeBinding binding;
+
+    ApiService apiService = ApiService.retrofit.create(ApiService.class);
+    Call<BaseResponse<List<MateMap>>> getMatebyUserCall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,16 +71,42 @@ public class LikeActivity extends AppCompatActivity {
             case SettingActivity.VALUE_LIKE_MATE:
 
                 // TODO 좋아요하는 메이트 이메일 데이터 받아옴
-                mateEmails = new ArrayList<>();
-                mateEmails.add("mate0@korea.com");
-                mateEmails.add("mate3@korea.com");
-                mateEmails.add("mate5@korea.com");
 
-                likeListMateAdapter = new LikeListMateAdapter(getLikeMates(mateEmails), (v, position) ->
-                    goToMateActivity(position)
-                );
-                binding.rcvLike.setAdapter(likeListMateAdapter);
-                setCount(likeListMateAdapter.getItemCount());
+                getMatebyUserCall = apiService.getMatebyUser();
+
+                getMatebyUserCall.enqueue(new Callback<BaseResponse<List<MateMap>>>() {
+                    @Override
+                    public void onResponse(Call<BaseResponse<List<MateMap>>> call, Response<BaseResponse<List<MateMap>>> response) {
+                        System.out.println(response.body().getMessage().get(0).getMate_email());
+                        String email;
+                        int mlike;
+                        for(int i =0; i<response.body().getMessage().size(); i++){
+
+                            email = response.body().getMessage().get(i).getMate_email();
+                            mlike = response.body().getMessage().get(i).getMlike();
+
+                            if(mlike > 0){
+                                mateEmails.add(email);
+                            }
+
+                        }
+                        if(mateEmails.isEmpty()){
+                            System.out.println("isEmpty!!");
+                        }
+                        likeListMateAdapter = new LikeListMateAdapter(getLikeMates(mateEmails), (v, position) ->
+                                goToMateActivity(position)
+                        );
+
+                        binding.rcvLike.setAdapter(likeListMateAdapter);
+                        setCount(likeListMateAdapter.getItemCount());
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseResponse<List<MateMap>>> call, Throwable t) {
+
+                    }
+                });
+
                 break;
 
             case SettingActivity.VALUE_LIKE_SPOT:
@@ -97,7 +134,7 @@ public class LikeActivity extends AppCompatActivity {
      * param mateEmails: 메이트 이메일 리스트
      * return mates: 이메일에 맵핑 되어있는 이미지 id
      */
-    private ArrayList<Integer> getLikeMates(@NotNull ArrayList<String> mateEmails) {
+    private ArrayList<Integer> getLikeMates(@NotNull List<String> mateEmails) {
 
         ArrayList<Integer> mates = new ArrayList<>();
         for (String mateEmail: mateEmails) {
