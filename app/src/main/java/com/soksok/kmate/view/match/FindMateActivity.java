@@ -137,18 +137,6 @@ public class FindMateActivity extends AppCompatActivity {
          */
         dialog.isShowing.observe(this, isShowing -> {
             if (!isShowing) {
-                showProgressCircleDialog(dialog);
-            }
-        });
-    }
-
-    private void showProgressCircleDialog(ApplyMateDialog applyMateDialog) {
-
-        ProgressCircleDialog dialog = new ProgressCircleDialog(this);
-        dialog.show();
-        dialog.isShowing.observe(this, isShowing -> {
-            if (!isShowing) {
-                applyMateDialog.dismiss();
                 goToMainActivity();
             }
         });

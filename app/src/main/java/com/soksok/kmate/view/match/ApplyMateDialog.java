@@ -33,6 +33,7 @@ public class ApplyMateDialog extends Dialog {
         TextView tvOk = findViewById(R.id.tv_apply_ok);
         tvOk.setOnClickListener(v -> {
             isShowing.postValue(false);
+            dismiss();
         });
     }
 }
