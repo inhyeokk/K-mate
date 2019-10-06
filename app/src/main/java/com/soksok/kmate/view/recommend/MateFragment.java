@@ -48,7 +48,7 @@ public class MateFragment extends Fragment {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.rcvMate.setLayoutManager(layoutManager);
-        ListMateAdapter mateAdapter = new ListMateAdapter(getMates(), getIsLikes(), new ListItemListener() {
+        final ListMateAdapter mateAdapter = new ListMateAdapter(getMates(), getIsLikes(), new ListItemListener() {
             @Override
             public void onLayoutClick(View v, int position) {
                 goToMateActivity(getString(R.string.common_mate_email, position));
@@ -59,6 +59,8 @@ public class MateFragment extends Fragment {
                 /* TODO
                  * 좋아요 선택 시 여부 반영
                  */
+                v.setSelected(!v.isSelected());
+
                 System.out.println("mate like : " +position);
                 System.out.println("isSelected : " +v.isSelected());
                 boolean isSel = v.isSelected();
@@ -94,8 +96,6 @@ public class MateFragment extends Fragment {
 //                        }
 //                    });
 //                }
-
-                v.setSelected(!v.isSelected());
             }
         }
         );
