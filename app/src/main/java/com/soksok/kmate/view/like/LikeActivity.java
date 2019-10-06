@@ -13,6 +13,7 @@ import com.soksok.kmate.databinding.ActivityLikeBinding;
 import com.soksok.kmate.http.model.BaseResponse;
 import com.soksok.kmate.http.model.MateMap;
 import com.soksok.kmate.http.model.Recommend;
+import com.soksok.kmate.http.model.TouristMap;
 import com.soksok.kmate.http.service.ApiService;
 import com.soksok.kmate.view.like.adapter.LikeListAdapter;
 import com.soksok.kmate.view.like.adapter.LikeListMateAdapter;
@@ -43,6 +44,7 @@ public class LikeActivity extends AppCompatActivity {
 
     ApiService apiService = ApiService.retrofit.create(ApiService.class);
     Call<BaseResponse<List<MateMap>>> getMatebyUserCall;
+    Call<BaseResponse<List<Recommend>>> getRecommendCall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,19 +112,42 @@ public class LikeActivity extends AppCompatActivity {
                 break;
 
             case SettingActivity.VALUE_LIKE_SPOT:
+                getRecommendCall = apiService.getAttrbyUser();
+                bindRecommendData(getRecommendCall);
+                break;
             case SettingActivity.VALUE_LIKE_RESTAURANT:
+                getRecommendCall = apiService.getEatbyUser();
+                bindRecommendData(getRecommendCall);
+                break;
             case SettingActivity.VALUE_LIKE_INFORMATION:
+                getRecommendCall = apiService.getInfobyUser();
+                bindRecommendData(getRecommendCall);
+                break;
+        }
+    }
 
-                // TODO 좋아요하는 맛집 or 관광지 or 정보 데이터 받아옴
-                recommends = new ArrayList<>();
-
+    private void bindRecommendData(Call<BaseResponse<List<Recommend>>> call){
+        recommends = new ArrayList<>();
+        call.enqueue(new Callback<BaseResponse<List<Recommend>>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<List<Recommend>>> call, Response<BaseResponse<List<Recommend>>> response) {
+                for(int i =0 ; i<response.body().getMessage().size(); i++){
+                    if(response.body().getMessage().get(i).getTouristMap().getMlike() > 0){
+                        recommends.add(response.body().getMessage().get(i));
+                    }
+                }
                 likeListAdapter = new LikeListAdapter(recommends, (v, position) ->
-                    goToExternalBrowser(recommends.get(position).getUrl())
+                        goToExternalBrowser(recommends.get(position).getUrl())
                 );
                 binding.rcvLike.setAdapter(likeListAdapter);
                 setCount(likeListAdapter.getItemCount());
-                break;
-        }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<List<Recommend>>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void setCount(int count) {

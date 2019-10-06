@@ -7,6 +7,7 @@ import com.soksok.kmate.http.model.Recommend;
 import com.soksok.kmate.http.model.TitleRecommend;
 import com.soksok.kmate.http.model.Tour;
 import com.soksok.kmate.http.model.Tourist;
+import com.soksok.kmate.http.model.TouristMap;
 import com.soksok.kmate.http.model.User;
 import com.soksok.kmate.http.model.request.LoginRequest;
 import com.soksok.kmate.http.model.request.RegisterRequest;
@@ -180,6 +181,40 @@ public interface ApiService {
     //   - 성공 200
     @GET("tourist/attr")
     Call<BaseResponse<Recommend>> getAllattrs();
+
+    // # 유저의 맛집 불러오기
+    //   - 유저의 맛집 불러온다. (map)
+    //   - 200 - 정상 불러오기
+    @GET("tourist/map/eat")
+    Call<BaseResponse<List<Recommend>>> getEatbyUser();
+
+    // # 유저의 명소 불러오기
+    //   - 유저의 명소 불러온다. (map)
+    //   - 200 - 정상 불러오기
+    @GET("tourist/map/attr")
+    Call<BaseResponse<List<Recommend>>> getAttrbyUser();
+
+    // # 유저의 정보 불러오기
+    //   - 유저의 정보 불러온다. (map)
+    //   - 200 - 정상 불러오기
+    @GET("tourist/map/info")
+    Call<BaseResponse<List<Recommend>>> getInfobyUser();
+
+    // # 추천리스트 좋아요
+    //   - 추천리스트 좋아요
+    //   - 200 - 정상처리
+    @PUT("tourist/like/{kind}/{num}")
+    Call<BaseResponse<List<String>>> likeRecommend(@Path("kind") String kind ,
+                                                       @Path("num") int num);
+
+    // # 추천리스트 좋아요 취소
+    //   - 추천리스트 좋아요 취소
+    //   - 200 - 정상처리
+    @PUT("tourist/unlike/{kind}/{num}")
+    Call<BaseResponse<List<String>>> unlikeRecommend(@Path("kind") String kind ,
+                                                       @Path("num") int num);
+
+
 
     // 자동으로 API 요청시 토큰을 담을 수 있도로 Intercepter 설정
     OkHttpClient client = new OkHttpClient.Builder()

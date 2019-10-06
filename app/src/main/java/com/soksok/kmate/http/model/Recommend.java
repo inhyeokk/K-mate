@@ -1,13 +1,19 @@
 package com.soksok.kmate.http.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Recommend {
     private String classname;
+
+    @SerializedName("idx")
     private int num;
+
     private String name;
     private String addr;
     private String tag;
     private String image;
     private String url;
+    private TouristMap touristMap;
 
     public Recommend(String classname, int num, String name, String addr, String tag, String image , String url) {
         this.classname = classname;
@@ -17,6 +23,14 @@ public class Recommend {
         this.tag = tag;
         this.image = image;
         this.url = url;
+    }
+
+    public TouristMap getTouristMap() {
+        return touristMap;
+    }
+
+    public void setTouristMap(TouristMap touristMap) {
+        this.touristMap = touristMap;
     }
 
     public String getClassname() {
@@ -75,6 +89,7 @@ public class Recommend {
         this.url = url;
     }
 
+
     @Override
     public String toString() {
         return "Recommend{" +
@@ -85,6 +100,7 @@ public class Recommend {
                 ", tag='" + tag + '\'' +
                 ", image='" + image + '\'' +
                 ", url='" + url + '\'' +
+                ", touristMap=" + touristMap +
                 '}';
     }
 }

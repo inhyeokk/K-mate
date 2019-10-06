@@ -69,6 +69,8 @@ public class RecommendActivity extends AppCompatActivity {
                         infos
                 );
 
+
+
                 binding.vpList.setAdapter(recommendAdapter);
                 binding.vpList.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout));
                 binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
